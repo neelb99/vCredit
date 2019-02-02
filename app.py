@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 #database initializing
-engine = create_engine("postgres://ibtulmwkycacxc:09dee55f0c884bc862d36edae646d0cb3c9f7d30580236979f15dec78dd4b297@ec2-54-225-121-235.compute-1.amazonaws.com:5432/d23t9c4c58u4un")
+engine = create_engine("postgresql://postgres:1677@localhost/vcredit")
 db = scoped_session(sessionmaker(bind=engine))
 
 #home page
@@ -43,6 +43,7 @@ def register():
             db.commit()
             session['rollno'] = roll.upper()
             session['admin']=False
+            return redirect('/account')
         else:
             return render_template('register.html',alreadyexists=True)
 
