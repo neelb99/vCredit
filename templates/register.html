@@ -3,13 +3,17 @@
 <head>
 </head>
 <body>
+	{% if alreadyexists %}
+	<p>An account with that roll already exists please <a href={{url_for('login')}}>sign in</a> instead</p>
+	{%endif%}
 	<form method="post">
 		<label for="roll">Roll Number: </label>
-		<input type="text" name="roll">
+		<input type="text" name="roll" required>
 		<label for="name">Name: </label>
-		<input type="text" name="name">
+		<input type="text" name="name" required>
 		<label for="pass">Password: </label>
-		<input type="password" name="pass">
+		<input type="password" name="pass" required>
 		<button type="submit">Submit</button>
+	
 </body>
 </html>

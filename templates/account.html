@@ -3,11 +3,13 @@
 <head>
 </head>
 <body>
-		{% if alreadyexists %}
-		<p>Your account already exists and you entered the correct password</p>
-		{%endif%}
     <p>Name: {{getname}}</p>
     <p>Roll number: {{getroll}}</p>
     <p>Balance: {{getbal}}</p>
+    <a href={{url_for('logout')}}>Logout</a>
+    <a href={{url_for('pay')}}>Pay</a>
+    {%if isadmin %}
+    <a href={{url_for('update')}}>Update Balance</a>
+    {%endif%}
 </body>
 </html>

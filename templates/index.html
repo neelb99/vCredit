@@ -3,9 +3,16 @@
 <head>
 </head>
 <body>
-    <h1>heading</h1>
+    <h1>HI</h1>
+  	{% if logged %}
+  	<a href={{url_for('account')}}>account</a>
+  	{% else %}
     <a href={{url_for('register')}}>Register</a>
     <a href={{url_for('login')}}>Sign In</a>
+    {%endif%}
     <a href={{url_for('pay')}}>Pay</a>
+    {% if isadmin %}
+    	<a href={{url_for('update')}}>Update Balance</a>
+    {%endif%}
 </body>
 </html>

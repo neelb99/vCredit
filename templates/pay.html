@@ -4,19 +4,22 @@
 </head>
 <body>
 	<form action="{{url_for('verify')}}" method="post">
+		{% if loggedout %}
 		<label for="roll">Your Roll Number: </label>
-		<input type="text" name="roll">
+		<input type="text" name="roll" required>
+		<label for="pass">Password: </label>
+		<input type="password" name="pass" required>
+		{%endif%}
 		<label for="receiver">Receiver: </label>
-		<select name="receiver">
-			<option value="1">Canteen</option>
-			<option value="2">Stationery</option>
-			<option value="3">CSI</option>
-			<option value="4">IEEE</option>
+		<select name="receiver" required>
+			<option value="canteen">Canteen</option>
+			<option value="stationery">Stationery</option>
+			<option value="csi">CSI</option>
+			<option value="ieee">IEEE</option>
 		</select>
 		<label for="amount">Amount: </label>
-		<input type="number" name="amount">
-		<label for="pass">Password: </label>
-		<input type="password" name="pass">
+		<input type="number" name="amount" required>
+		
 		
 		<button type="submit">Pay</button>
 </body>

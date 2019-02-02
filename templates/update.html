@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<form action="{{url_for('updateverify')}}" method="post">
+		<label for="roll">Roll Number: </label>
+		<input type="text" name="roll" required>
+		<label for="amount">Amount: </label>
+		<input type="number" name="amount" required>
+		<label for="pass">Administrator Password: </label>
+		<input type="password" name="pass" required>
+		<button type="submit">Pay</button>
+</body>
+</html>
