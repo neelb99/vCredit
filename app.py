@@ -6,7 +6,7 @@ from datetime import datetime,timedelta
 
 app = Flask(__name__)
 #session key
-app.secret_key = os.urandom(24)
+app.secret_key = "abdhasbdjansdkansdjkansdjkasnd"
 
 #database initializing
 engine = create_engine("postgres://ibtulmwkycacxc:09dee55f0c884bc862d36edae646d0cb3c9f7d30580236979f15dec78dd4b297@ec2-54-225-121-235.compute-1.amazonaws.com:5432/d23t9c4c58u4un")
