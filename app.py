@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,session, g
+from flask import Flask, render_template, request, redirect,session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 import os
@@ -15,7 +15,7 @@ db = scoped_session(sessionmaker(bind=engine))
 #home page
 @app.route("/")
 def index():
-    if g.rollno:
+    if 'rollno' in session:
         if session["admin"]:
             adminstatus=True
         else:
@@ -28,12 +28,12 @@ def index():
 @app.route("/register", methods=["GET","POST"])
 def register():
     if request.method == "GET":
-        if g.rollno:
+        if 'rollno' in session:
             return redirect('/account')
         else:
             return render_template('register.html', alreadyexists=False)
     else:
-        if g.rollno:
+        if 'rollno' in session:
             return redirect('/account')
         else:
             roll = request.form.get("roll").strip()
@@ -55,12 +55,12 @@ def register():
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "GET":
-        if g.rollno:
+        if 'rollno' in session:
             return redirect('/account')
         else:
             return render_template('login.html',wrong=False)
     else:
-        if g.rollno:
+        if 'rollno' in session:
             return redirect('/account')
         else:
             roll = request.form.get("roll").strip()
@@ -81,17 +81,17 @@ def login():
 
 @app.route("/account")
 def account():
-    if g.rollno:
-        user = db.execute("SELECT * from users where roll = :rollno", {"rollno": g.rollno}).fetchone()
+    if 'rollno' in session:
+        user = db.execute("SELECT * from users where roll = :rollno", {"rollno": session['rollno']}).fetchone()
         transhistory = db.execute("SELECT * from transactions where sender = :sender or receiver= :receiver",
-                                  {"sender":g.rollno.upper(), "receiver":g.rollno.upper()}).fetchall()
+                                  {"sender":session['rollno'].upper(), "receiver":session['rollno'].upper()}).fetchall()
         return render_template('account.html',getname=user.name,getroll=user.roll,getbal=user.balance, isadmin=session['admin'], history=transhistory)
     else:
         return redirect('/login')
 
 @app.route("/pay")
 def pay():
-    if g.rollno:
+    if 'rollno' in session:
         return render_template('pay.html', loggedout=False)
     else:
         return render_template('pay.html', loggedout=True)
@@ -101,16 +101,16 @@ def verify():
     if request.method=="GET":
         return redirect('/pay')
     else:
-        if g.rollno:
-            roll = g.rollno
+        if 'rollno' in session:
+            roll = session['rollno']
         else:
             roll = request.form.get("roll").strip()
         check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
         if not check:
             return redirect('/pay')
         else:
-            if g.rollno:
-                user = db.execute("SELECT * from users where roll = :rollno", {"rollno": g.rollno}).fetchone()
+            if 'rollno' in session:
+                user = db.execute("SELECT * from users where roll = :rollno", {"rollno": session['rollno']}).fetchone()
                 password = user.password
             else:
                 password = request.form.get("pass").strip()
@@ -137,7 +137,7 @@ def verify():
 
 @app.route("/logout")
 def logout():
-    if g.rollno:
+    if 'rollno' in session:
         session.pop('rollno',None)
         return redirect('/')
     else:
@@ -145,7 +145,7 @@ def logout():
 
 @app.route("/update")
 def update():
-    if g.rollno:
+    if 'rollno' in session:
         if session['admin']:
             return render_template('update.html')
         else:
@@ -155,7 +155,7 @@ def update():
 
 @app.route("/updateverify",methods=["GET","POST"])
 def updateverify():
-    if g.rollno:
+    if 'rollno' in session:
         if session['admin']:
             password = request.form.get("pass").strip()
             admin = db.execute("Select * from users where roll='ADMIN'").fetchone()
@@ -179,9 +179,4 @@ def updateverify():
             return redirect('/')
     else:
         return redirect('/')
-
-@app.before_request
-def before_request():
-    g.rollno = None
-    if 'rollno' in session:
-        g.rollno = session['rollno']
+    
