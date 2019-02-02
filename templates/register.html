@@ -6,7 +6,7 @@
 	{% if alreadyexists %}
 	<p>An account with that roll already exists please <a href={{url_for('login')}}>sign in</a> instead</p>
 	{%endif%}
-	<form method="post">
+	<form action={{url_for('register')}} method="post">
 		<label for="roll">Roll Number: </label>
 		<input type="text" name="roll" required>
 		<label for="name">Name: </label>
