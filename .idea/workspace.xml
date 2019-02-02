@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0f567e4-8c9b-4ce7-b100-d9cb088e99c0" name="Default Changelist" comment="" />
+    <list default="true" id="b0f567e4-8c9b-4ce7-b100-d9cb088e99c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+            <state relative-caret-position="111">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="29" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -74,6 +76,10 @@
       <find>&quot;roll&quot;</find>
       <find>&quot;rollno&quot;</find>
       <find>/login</find>
+      <find>session</find>
+      <find>session['rol</find>
+      <find>if 'rollno'</find>
+      <find>session['roll</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,8 +218,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        <state relative-caret-position="111">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="29" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
