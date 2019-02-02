@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b0f567e4-8c9b-4ce7-b100-d9cb088e99c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/updateverify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/updateverify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/verify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/verify.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1675">
-              <caret line="124" column="78" selection-start-line="124" selection-start-column="78" selection-end-line="124" selection-end-column="78" />
+            <state relative-caret-position="187">
+              <caret line="11" column="177" selection-start-line="11" selection-start-column="177" selection-end-line="11" selection-end-column="177" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -162,6 +154,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -220,8 +213,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1675">
-          <caret line="124" column="78" selection-start-line="124" selection-start-column="78" selection-end-line="124" selection-end-column="78" />
+        <state relative-caret-position="187">
+          <caret line="11" column="177" selection-start-line="11" selection-start-column="177" selection-end-line="11" selection-end-column="177" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
