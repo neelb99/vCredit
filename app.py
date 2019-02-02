@@ -27,49 +27,57 @@ def index():
 #register page
 @app.route("/register", methods=["GET","POST"])
 def register():
-    if 'rollno' in session:
-        return redirect('/account')
     if request.method == "GET":
-        return render_template('register.html', alreadyexists=False)
-    else:
-        roll = request.form.get("roll").strip()
-        check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
-        password = request.form.get("pass").strip()
-        if not check:
-            name = request.form.get("name").strip()
-            db.execute("insert into users (roll,name,password,balance) VALUES(:roll,:name,:pass,:balance)",
-                       {"roll": roll.upper(), "name": name, "pass": password,
-                        "balance": 0})
-            db.commit()
-            session['rollno'] = roll.upper()
-            session['admin']=False
+        if 'rollno' in session:
             return redirect('/account')
         else:
-            return render_template('register.html',alreadyexists=True)
+            return render_template('register.html', alreadyexists=False)
+    else:
+        if 'rollno' in session:
+            return redirect('/account')
+        else:
+            roll = request.form.get("roll").strip()
+            check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
+            password = request.form.get("pass").strip()
+            if not check:
+                name = request.form.get("name").strip()
+                db.execute("insert into users (roll,name,password,balance) VALUES(:roll,:name,:pass,:balance)",
+                           {"roll": roll.upper(), "name": name, "pass": password,
+                            "balance": 0})
+                db.commit()
+                session['rollno'] = roll.upper()
+                session['admin']=False
+                return redirect('/account')
+            else:
+                return render_template('register.html',alreadyexists=True)
 
 
 @app.route("/login", methods=["GET","POST"])
 def login():
-    if 'rollno' in session:
-        return redirect('/account')
     if request.method == "GET":
-        return render_template('login.html',wrong=False)
-    else:
-        roll = request.form.get("roll").strip()
-        check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
-        if not check:
-            return render_template('login.html', wrong=True)
+        if 'rollno' in session:
+            return redirect('/account')
         else:
-            password = request.form.get("pass").strip()
-            if check.password == password:
-                session['rollno']=roll.upper()
-                if session['rollno']=='ADMIN':
-                    session['admin']=True
-                else:
-                    session['admin']=False
-                return redirect('/account')
-            else:
+            return render_template('login.html',wrong=False)
+    else:
+        if 'rollno' in session:
+            return redirect('/account')
+        else:
+            roll = request.form.get("roll").strip()
+            check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
+            if not check:
                 return render_template('login.html', wrong=True)
+            else:
+                password = request.form.get("pass").strip()
+                if check.password == password:
+                    session['rollno']=roll.upper()
+                    if session['rollno']=='ADMIN':
+                        session['admin']=True
+                    else:
+                        session['admin']=False
+                    return redirect('/account')
+                else:
+                    return render_template('login.html', wrong=True)
 
 @app.route("/account")
 def account():
