@@ -11,5 +11,11 @@
     {%if isadmin %}
     <a href={{url_for('update')}}>Update Balance</a>
     {%endif%}
+    <ul>
+    {% for item in history %}
+    <li>{{item.sender}} paid {{item.amount}} to {{item.receiver}} on {{item.timestamp}}</li>
+    {%endfor%}
+  </ul>
+  <a href="{{url_for('index')}}">home</a>
 </body>
 </html>

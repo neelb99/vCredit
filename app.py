@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect,session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 import os
+from datetime import datetime,timedelta
 
 app = Flask(__name__)
 #session key
@@ -73,7 +74,9 @@ def login():
 def account():
     if 'rollno' in session:
         user = db.execute("SELECT * from users where roll = :rollno", {"rollno": session['rollno']}).fetchone()
-        return render_template('account.html',getname=user.name,getroll=user.roll,getbal=user.balance, isadmin=session['admin'])
+        transhistory = db.execute("SELECT * from transactions where sender = :sender or receiver= :receiver",
+                                  {"sender":session['rollno'].upper(), "receiver":session['rollno'].upper()}).fetchall()
+        return render_template('account.html',getname=user.name,getroll=user.roll,getbal=user.balance, isadmin=session['admin'], history=transhistory)
     else:
         return redirect('/login')
 
@@ -106,7 +109,7 @@ def verify():
                 return redirect('/pay')
             else:
                 receiver = request.form.get("receiver").strip()
-                check2 = db.execute("SELECT * from users where roll = :rollno", {"rollno": receiver}).fetchone()
+                check2 = db.execute("SELECT * from users where roll = :rollno", {"rollno": receiver.upper()}).fetchone()
                 if not check2:
                     return redirect('/pay')
                 else:
@@ -115,9 +118,13 @@ def verify():
                         return redirect('/pay')
                     else:
                         db.execute("update users set balance = :newbal where roll = :rollno",{"newbal":check.balance-int(amount),"rollno": roll.upper()})
-                        db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver})
+                        db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver.upper()})
+                        time = datetime.now() + timedelta(hours=5, minutes=30)
+                        strtime = time.strftime("%d-%m-%Y at %I:%M %p")
+                        db.execute("insert into transactions (sender,receiver,amount,timestamp) VALUES(:sender,:receiver,:amount,:time)",
+                                   {"sender":roll.upper(), "receiver":receiver.upper(),"amount":int(amount),"time":strtime})
                         db.commit()
-                        return render_template('verify.html',payer=check.name,receiver=check2.name, amount=amount)
+                        return render_template('verify.html',payer=check.name,receiver=check2.name, amount=amount, time=strtime)
 
 @app.route("/logout")
 def logout():
@@ -146,11 +153,15 @@ def updateverify():
             if password == admin.password:
                 amount = request.form.get("amount").strip()
                 roll = request.form.get("roll").strip()
-                user =  db.execute("Select * from users where roll=:rollno",{"rollno":roll}).fetchone()
+                user =  db.execute("Select * from users where roll=:rollno",{"rollno":roll.upper()}).fetchone()
                 if user:
-                    db.execute("update users set balance=:newbal where roll=:rollno",{"rollno":roll,"newbal":user.balance+int(amount)})
+                    db.execute("update users set balance=:newbal where roll=:rollno",{"rollno":roll.upper(),"newbal":user.balance+int(amount)})
+                    time = datetime.now() + timedelta(hours=5, minutes=30)
+                    strtime = time.strftime("%d-%m-%Y at %I:%M %p")
+                    db.execute("insert into transactions (sender,receiver,amount,timestamp) VALUES(:sender,:receiver,:amount,:time)",
+                        {"sender": "ADMIN", "receiver": roll.upper(), "amount": int(amount), "time": strtime})
                     db.commit()
-                    return render_template('updateverify.html',amount=amount, receiver=user.name)
+                    return render_template('updateverify.html',amount=amount, receiver=user.name, time=strtime)
                 else:
                     return redirect('/update')
             else:
