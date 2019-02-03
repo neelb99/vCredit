@@ -5,11 +5,11 @@
 <h2> PAYMENT </h2>
 
 {% if wrong %}
-<h3>Invalid Information</h3>
+<p>Invalid Information</p>
 {%endif%}
 
 {%if insufficient %}
-<h3>Insufficient Funds</h3>
+<p>Insufficient Funds</p>
 {%endif%}
 
 <form action="{{url_for('verify')}}" method="post">

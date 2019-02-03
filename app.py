@@ -126,7 +126,7 @@ def verify():
                 else:
                     amount = request.form.get("amount").strip()
                     if int(amount)>check.balance:
-                        return render_template('pay.html', loggedout=loggedout, wrong=True, insufficient=True)
+                        return render_template('pay.html', loggedout=loggedout, wrong=False, insufficient=True)
                     else:
                         db.execute("update users set balance = :newbal where roll = :rollno",{"newbal":check.balance-int(amount),"rollno": roll.upper()})
                         db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver.upper()})
