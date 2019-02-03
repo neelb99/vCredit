@@ -5,25 +5,25 @@
 
 <br>
 {% if logged %}
-  	<button type="button" onclick="location.href'{{url_for('account')}}'">Account</button>
+  	<button type="button" onclick="location.href='{{url_for('account')}}'">Account</button>
   	<br>
   	<br>
-		<button type="button" onclick="location.href'{{url_for('logout')}}'">Log out</button> 
+		<button type="button" onclick="location.href='{{url_for('logout')}}'">Log out</button> 
 		<br>
 		<br>
   	{% else %}
-    <button type="button" onclick="location.href'{{url_for('login')}}'">Login</button>
+    <button type="button" onclick="location.href='{{url_for('login')}}'">Login</button>
     <br>
     <br>
-		<button type="button" onclick="location.href'{{url_for('register')}}'">Register</button>
+		<button type="button" onclick="location.href='{{url_for('register')}}'">Register</button>
 		<br>
 		<br> 
     {%endif%}
-    <button type="button" onclick="location.href'{{url_for('pay')}}'">Pay</button>
+    <button type="button" onclick="location.href='{{url_for('pay')}}'">Pay</button>
     <br>
     <br>
     {% if isadmin %}
-    	<button type="button" onclick="location.href'{{url_for('update')}}'">Update</button>
+    	<button type="button" onclick="location.href='{{url_for('update')}}'">Update</button>
     	<br>
     	<br>
     {%endif%}

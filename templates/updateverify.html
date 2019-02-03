@@ -3,8 +3,10 @@
 <head>
 </head>
 <body>
-		<p>Added {{amount}} to {{receiver}}'s account on {{time}}</p>
-		<a href="{{url_for('index')}}">home</a>
-		<a href="{{url_for('account')}}">account</a>
+		<h3>Added {{amount}} to {{receiver}}'s account on {{time}}</h3><br><br>
+		click here to proceed
+<br>
+
+<button type="button" onclick="location.href='{{url_for('index')}}'"> DONE  </button>
 </body>
 </html>

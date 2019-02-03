@@ -1,10 +1,24 @@
-<!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
-		<p>{{payer}} paid {{receiver}} amount {{amount}} on {{time}}.</p>
-		<a href="{{url_for('index')}}">home</a>
-		<a href="{{url_for('account')}}">account</a>
+
+<h2> VERIFICATION</h2>
+
+
+
+<h3> {{payer}} Your payment of {{amount}} to {{receiver}} is successfully done on {{time}}</h3> 
+ 
+Show this message to the person in charge as proof of payment!
+
+<br><br>
+
+
+click here to proceed
+<br>
+
+<button type="button" onclick="location.href='{{url_for('index')}}'"> DONE  </button>
+
+
+
+
 </body>
 </html>
