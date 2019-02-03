@@ -83,7 +83,7 @@ def login():
 def account():
     if 'rollno' in session:
         user = db.execute("SELECT * from users where roll = :rollno", {"rollno": session['rollno']}).fetchone()
-        transhistory = db.execute("SELECT * from transactions where sender = :sender or receiver= :receiver",
+        transhistory = db.execute("SELECT * from transactions where sender = :sender or receiver= :receiver order by timestamp desc;",
                                   {"sender":session['rollno'].upper(), "receiver":session['rollno'].upper()}).fetchall()
         return render_template('account.html',getname=user.name,getroll=user.roll,getbal=user.balance, isadmin=session['admin'], history=transhistory)
     else:
