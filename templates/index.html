@@ -1,20 +1,33 @@
-<!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
-    <h1>HI</h1>
-  	{% if logged %}
-  	<a href={{url_for('account')}}>account</a>
-  	<a href={{url_for('logout')}}>Logout</a>
+
+<marquee> <h1> WELCOME TO V-CREDIT </h1> </marquee> 
+
+<br>
+{% if logged %}
+  	<button type="button" onclick="{{url_for('account')}}">Account</button>
+  	<br>
+		<button type="button" onclick="{{url_for('logout')}">Log out</button> 
+		<br>
   	{% else %}
-    <a href={{url_for('register')}}>Register</a>
-    <a href={{url_for('login')}}>Sign In</a>
+    <button type="button" onclick="{{url_for('login')}}">Login</button>
+    <br>
+		<button type="button" onclick="{{url_for('register')}">Register</button>
+		<br> 
     {%endif%}
-    <a href={{url_for('pay')}}>Pay</a>
+    <button type="button" onclick="{{url_for('pay')}}">Pay</button>
+    <br>
     {% if isadmin %}
-    	<a href={{url_for('update')}}>Update Balance</a>
+    	<button type="button" onclick="{{url_for('update')}}">Update</button>
+    	<br>
     {%endif%}
+<hr>
+
+<h3>INSTRUCTIONS:</h3>
+<br><br>
+
+
+
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect,session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-import os
 from datetime import datetime,timedelta
 
 app = Flask(__name__)
