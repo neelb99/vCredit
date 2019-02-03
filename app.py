@@ -92,9 +92,9 @@ def account():
 @app.route("/pay")
 def pay():
     if 'rollno' in session:
-        return render_template('pay.html', loggedout=False)
+        return render_template('pay.html', loggedout=False, wrong=False, insufficient=False)
     else:
-        return render_template('pay.html', loggedout=True)
+        return render_template('pay.html', loggedout=True, wrong=False, insufficient=False)
 
 @app.route("/verify",methods=["POST","GET"])
 def verify():
@@ -103,11 +103,13 @@ def verify():
     else:
         if 'rollno' in session:
             roll = session['rollno']
+            loggedout = False
         else:
+            loggedout=True
             roll = request.form.get("roll").strip()
         check = db.execute("SELECT * from users where roll = :rollno", {"rollno": roll.upper()}).fetchone()
         if not check:
-            return redirect('/pay')
+            return render_template('pay.html', loggedout=loggedout,wrong=True, insufficient=False)
         else:
             if 'rollno' in session:
                 user = db.execute("SELECT * from users where roll = :rollno", {"rollno": session['rollno']}).fetchone()
@@ -115,16 +117,16 @@ def verify():
             else:
                 password = request.form.get("pass").strip()
             if check.password != password:
-                return redirect('/pay')
+                return render_template('pay.html', loggedout=loggedout, wrong=True, insufficient=False)
             else:
                 receiver = request.form.get("receiver").strip()
                 check2 = db.execute("SELECT * from users where roll = :rollno", {"rollno": receiver.upper()}).fetchone()
                 if not check2:
-                    return redirect('/pay')
+                    return render_template('pay.html', loggedout=loggedout, wrong=True, insufficient=False)
                 else:
                     amount = request.form.get("amount").strip()
                     if int(amount)>check.balance:
-                        return redirect('/pay')
+                        return render_template('pay.html', loggedout=loggedout, wrong=True, insufficient=True)
                     else:
                         db.execute("update users set balance = :newbal where roll = :rollno",{"newbal":check.balance-int(amount),"rollno": roll.upper()})
                         db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver.upper()})

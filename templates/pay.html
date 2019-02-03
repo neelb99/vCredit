@@ -4,6 +4,14 @@
 
 <h2> PAYMENT </h2>
 
+{% if wrong %}
+<h3>Invalid Information</h3>
+{%endif%}
+
+{%if insufficient %}
+<h3>Insufficient Funds</h3>
+{%endif%}
+
 <form action="{{url_for('verify')}}" method="post">
 		{% if loggedout %}
 		<label for="roll">Your Roll Number: </label>
