@@ -131,7 +131,7 @@ def verify():
                         db.execute("update users set balance = :newbal where roll = :rollno",{"newbal":check.balance-int(amount),"rollno": roll.upper()})
                         db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver.upper()})
                         time = datetime.now() + timedelta(hours=5, minutes=30)
-                        strtime = time.strftime("%d-%m-%Y at %I:%M %p")
+                        strtime = time.strftime("%d-%m-%Y at %H:%M")
                         db.execute("insert into transactions (sender,receiver,amount,timestamp) VALUES(:sender,:receiver,:amount,:time)",
                                    {"sender":roll.upper(), "receiver":receiver.upper(),"amount":int(amount),"time":strtime})
                         db.commit()
@@ -168,7 +168,7 @@ def updateverify():
                 if user:
                     db.execute("update users set balance=:newbal where roll=:rollno",{"rollno":roll.upper(),"newbal":user.balance+int(amount)})
                     time = datetime.now() + timedelta(hours=5, minutes=30)
-                    strtime = time.strftime("%d-%m-%Y at %I:%M %p")
+                    strtime = time.strftime("%d-%m-%Y at %I:%H")
                     db.execute("insert into transactions (sender,receiver,amount,timestamp) VALUES(:sender,:receiver,:amount,:time)",
                         {"sender": "ADMIN", "receiver": roll.upper(), "amount": int(amount), "time": strtime})
                     db.commit()
