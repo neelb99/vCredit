@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
-	{% if wrong %}
-	<h1>Enter valid details</h1>
+
+<h2> Fill the details to login </h2>
+{% if wrong %}
+	<h3>Enter valid details</h3>
 	{%endif%}
-	<form action={{url_for('login')}} method="post">
-		<label for="roll">Roll Number: </label>
-		<input type="text" name="roll" required>
-		<label for="pass">Password: </label>
-		<input type="password" name="pass" required>
-		<button type="submit">Submit</button>
-	</form>
-	<a href="{{url_for('index')}}">home</a>
+<form action={{url_for('login')}} method="post">
+	<label for="roll">Roll Number: </label>
+  <input type="text" name="roll" required>
+  <br><br>
+  <label for="pass">Password: </label>
+	<input type="password" name="pass" required>
+  <br><br>
+  <input type="submit">
+</form>
+<a href="{{url_for('index')}}">home</a>
 		<a href="{{url_for('account')}}">account</a>
-	
+
 </body>
 </html>

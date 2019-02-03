@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
-	<form action="{{url_for('verify')}}" method="post">
+
+<h2> PAYMENT </h2>
+
+<form action="{{url_for('verify')}}" method="post">
 		{% if loggedout %}
 		<label for="roll">Your Roll Number: </label>
 		<input type="text" name="roll" required>
 		<label for="pass">Password: </label>
 		<input type="password" name="pass" required>
 		{%endif%}
-		<label for="receiver">Receiver: </label>
-		<select name="receiver" required>
+
+<label for="receiver">Pay to: </label>
+<select name="receiver" required>
 			<option value="canteen">Canteen</option>
 			<option value="stationery">Stationery</option>
 			<option value="csi">CSI</option>
 			<option value="ieee">IEEE</option>
 		</select>
-		<label for="amount">Amount: </label>
-		<input type="number" name="amount" required>
-		
-		
-		<button type="submit">Pay</button>
-	</form>
-	<a href="{{url_for('index')}}">home</a>
+<br><br>
+  
+
+<label for="amount">Amount: </label>
+<input type="number" name="amount" required>
+<br><br>
+
+
+<button type="submit">Proceed</button>
+
+
+</form>
+
+<a href="{{url_for('index')}}">home</a>
 		<a href="{{url_for('account')}}">account</a>
+
 </body>
 </html>
