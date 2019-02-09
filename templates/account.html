@@ -63,14 +63,16 @@
   </nav>
   <div class="main">
     <div id="info">
+      
       <h1 class="text-center"> Welcome {{getname}}</h1>
       <div class="jumbotron">
         <h3>Account Details:</h3><br>
         <p><b>Roll number: </b>{{getroll}}<br><B>Balance: </B>{{getbal}}</p>
+      
         <h3>Transaction History:</h3>
-        <ul>
+        <ul class="list-group">
           {% for item in history %}
-            <li><b>{{item.sender}}</b> paid <b>{{item.amount}}</b> to <b>{{item.receiver}}</b> on <i>{{item.timestamp}}</i></li>
+            <li class="list-group-item">{{item.sender}} paid {{item.amount}} to {{item.receiver}} on <i>{{item.timestamp}}</i></li>
           {%endfor%}
         </ul>
       </div>
