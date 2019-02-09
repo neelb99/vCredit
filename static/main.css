@@ -68,3 +68,9 @@ p{
 .jumbotron{
 	background-color: 	#DCDCDC;
 }
+
+@media(max-height: 500px){
+	#secondary{
+		padding-top: 50px;
+	}
+}
