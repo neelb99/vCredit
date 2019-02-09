@@ -10,3 +10,61 @@
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.85);
 }
+
+.main{
+	width: 100%;
+	height: auto;
+	padding:20px;
+	color:#EEF0EB;
+	font-size: 20px;
+}
+
+body{
+	background-color:	#284B63 ;
+}
+
+.bg-dark{
+	background-color: #0E0B16!important;
+}
+
+#intro{
+	width: 100%;
+	min-height: 92vh;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
+}
+
+#secondary{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	align-items: center;
+	color: black;
+}
+
+h1{
+	padding-bottom: 20px;
+}
+
+#secondary ul{
+	padding-top:20px;
+}
+
+p{
+	padding-bottom: 20px;
+}
+
+.btn{
+	padding:0px,15px,0px,15px;
+}
+
+.btn-dark{
+	background-color: #0E0B16!important;
+}
+
+.jumbotron{
+	background-color: 	#DCDCDC;
+}
