@@ -61,24 +61,14 @@
       </ul>
     </div>
   </nav>
-<h2> VERIFICATION</h2>
-
-
-
-<h3> {{payer}} Your payment of {{amount}} to {{receiver}} is successfully done on {{time}}</h3> 
- 
-Show this message to the person in charge as proof of payment!
-
-<br><br>
-
-
-click here to proceed
-<br>
-
-<button type="button" onclick="location.href='{{url_for('index')}}'"> DONE  </button>
-
-
-
+  <div class="main">
+    <div id="intro">
+			<h1 class="text-center">Verification</h1>
+			<p class="text-center"> {{payer}}, your payment of <b>{{amount}}</b> to {{receiver}} is successfully done on <i>{{time}}</i></p> 
+ 			<p class="text-center">Show this message to the person in charge as proof of payment!</p>
+			<button type="button" onclick="location.href='{{url_for('account')}}'" class="btn btn-success">Your Account</button>
+		</div>
+	</div>
 </div>
 </body>
 </html>

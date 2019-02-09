@@ -148,6 +148,9 @@ def verify():
                     amount = request.form.get("amount").strip()
                     if int(amount)>check.balance:
                         return render_template('pay.html',logged=logged, loggedout=loggedout, wrong=False, insufficient=True, isadmin=isadmin)
+                    elif int(amount) == 0:
+                        return render_template('pay.html', logged=logged, loggedout=loggedout, wrong=True,
+                                               insufficient=False, isadmin=isadmin)
                     else:
                         db.execute("update users set balance = :newbal where roll = :rollno",{"newbal":check.balance-int(amount),"rollno": roll.upper()})
                         db.execute("update users set balance = :newbal2 where roll = :rollno", {"newbal2":check2.balance+int(amount),"rollno": receiver.upper()})
@@ -188,7 +191,7 @@ def updateverify():
                 amount = request.form.get("amount").strip()
                 roll = request.form.get("roll").strip()
                 user =  db.execute("Select * from users where roll=:rollno",{"rollno":roll.upper()}).fetchone()
-                if user:
+                if user and (int(amount)!=0):
                     db.execute("update users set balance=:newbal where roll=:rollno",{"rollno":roll.upper(),"newbal":user.balance+int(amount)})
                     time = datetime.now() + timedelta(hours=5, minutes=30)
                     strtime = time.strftime("%d-%m-%Y at %H:%M")

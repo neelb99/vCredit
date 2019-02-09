@@ -61,11 +61,13 @@
       </ul>
     </div>
   </nav>
-		<h3>Added {{amount}} to {{receiver}}'s account on {{time}}</h3><br><br>
-		click here to proceed
-<br>
-
-<button type="button" onclick="location.href='{{url_for('index')}}'"> DONE  </button>
+  <div class="main">
+    <div id="intro">
+    	<h1 class="text-center">Verification</h1>
+			<p class="text-center">Added <b>{{amount}}</b> to {{receiver}}'s account on <i>{{time}}</i></p>
+			<button type="button" onclick="location.href='{{url_for('index')}}'" class="btn btn-success">Proceed</button>
+		</div>
+	</div>
 </div>
 </body>
 </html>
