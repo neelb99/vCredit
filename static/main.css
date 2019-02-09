@@ -36,6 +36,11 @@ body{
 	align-items: center;
 }
 
+#info{
+	width: 100%;
+	min-height: 92vh;
+}
+
 #secondary{
 	width: 100%;
 	display: flex;
@@ -47,6 +52,10 @@ body{
 
 h1{
 	padding-bottom: 20px;
+}
+
+h3{
+	padding:15px,0px,15px,0px;
 }
 
 #secondary ul{

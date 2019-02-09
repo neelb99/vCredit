@@ -61,25 +61,21 @@
       </ul>
     </div>
   </nav>
-<h2> Welcome {{getname}}</h2>
-<br>
-<p>Roll number: {{getroll}}</p>
-<p>Balance: {{getbal}}</p>
-    <a href={{url_for('logout')}}>Logout</a>
-    <a href={{url_for('pay')}}>Pay</a>
-    {%if isadmin %}
-    <a href={{url_for('update')}}>Update Balance</a>
-    {%endif%}
-    <ul>
-    {% for item in history %}
-    <li>{{item.sender}} paid {{item.amount}} to {{item.receiver}} on {{item.timestamp}}</li>
-    {%endfor%}
-  </ul>
-  <a href="{{url_for('index')}}">home</a>
-  <br>
-  <a href={{url_for('pay')}}>Pay</a>
+  <div class="main">
+    <div id="info">
+      <h1 class="text-center"> Welcome {{getname}}</h1>
+      <div class="jumbotron">
+        <h3>Account Details:</h3><br>
+        <p><b>Roll number: </b>{{getroll}}<br><B>Balance: </B>{{getbal}}</p>
+        <h3>Transaction History:</h3>
+        <ul>
+          {% for item in history %}
+            <li><b>{{item.sender}}</b> paid <b>{{item.amount}}</b> to <b>{{item.receiver}}</b> on <i>{{item.timestamp}}</i></li>
+          {%endfor%}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 </body>
 </html>
