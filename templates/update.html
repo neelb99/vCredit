@@ -61,29 +61,42 @@
       </ul>
     </div>
   </nav>
-<h2> ADMIN's DESK </h2>
-
-<form action="{{url_for('updateverify')}}" method="post">
-<label for="roll">Transfer to: </label>
-<input type="text" name="roll" required>
-<br><br>
-
-<label for="amount">Amount: </label>
-<input type="number" name="amount" required>
-<br><br>
-
-
-<label for="pass">Administrator Password: </label>
-<input type="password" name="pass" required>
-<br><br>
-
-<button type="submit" >Update Balance</button>
-
-
-</form>
-
-<a href="{{url_for('index')}}">home</a>
-<a href="{{url_for('account')}}">account</a>
+  <div class="main">
+  	<div id="intro">
+  		<div class="jumbotron">
+				<h1 class="text-center">Admin's Desk</h1>
+				<form action="{{url_for('updateverify')}}" method="post">
+					<div class="form-group row">
+						<div class="col-xs-5 col-md-5">
+							<label for="roll">Transfer to: </label>
+						</div>
+						<div class="col-xs-7 col-md-7">
+							<input type="text" name="roll" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-5 col-md-5">
+							<label for="amount">Amount: </label>
+						</div>
+						<div class="col-xs-7 col-md-7">
+							<input type="number" name="amount" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-5 col-md-5">
+							<label for="pass">Admin Password: </label>
+						</div>
+						<div class="col-xs-7 col-md-7">
+							<input type="password" name="pass" required>
+						</div>
+					</div>
+					<center>
+						<button type="submit" class="btn btn-success">Update Balance</button>
+					</center>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
