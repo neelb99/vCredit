@@ -80,8 +80,6 @@ def login():
                     session['rollno']=roll.upper()
                     if session['rollno']=='ADMIN':
                         session['admin']=True
-                    else:
-                        session['admin']=False
                     return redirect('/account')
                 else:
                     return render_template('login.html', wrong=True,isadmin=isadmin,logged=False)
