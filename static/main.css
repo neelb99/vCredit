@@ -66,11 +66,24 @@ p{
 }
 
 .jumbotron{
-	background-color: 	#DCDCDC;
+	background-color: #DCDCDC;
+	color: black;
 }
 
 @media(max-height: 500px){
 	#secondary{
 		padding-top: 50px;
 	}
+}
+
+.btn-primary{
+	margin-top:20px;
+}
+
+.form-group{
+	padding: 10px;
+}
+
+form{
+	padding:20px;
 }

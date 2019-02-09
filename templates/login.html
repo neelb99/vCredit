@@ -61,21 +61,37 @@
       </ul>
     </div>
   </nav>
-<h2> Fill the details to login </h2>
-{% if wrong %}
-	<h3>Enter valid details</h3>
-	{%endif%}
-<form action={{url_for('login')}} method="post">
-	<label for="roll">Roll Number: </label>
-  <input type="text" name="roll" required>
-  <br><br>
-  <label for="pass">Password: </label>
-	<input type="password" name="pass" required>
-  <br><br>
-  <input type="submit">
-</form>
-<a href="{{url_for('index')}}">home</a>
-		<a href="{{url_for('account')}}">account</a>
+  <div class="main">
+  	<div id="intro">
+  		<div class="jumbotron">
+				<h1 class="text-center">Enter details</h1>
+				{% if wrong %}
+					<h4>Enter valid details</h4>
+				{%endif%}
+				<form action={{url_for('login')}} method="post">
+					<div class="form-group row">
+						<div class="col-xs-5 col-md-5">
+							<label for="roll">Roll Number: </label>
+						</div>
+						<div class="col-xs-7 col-md-7">
+							<input type="text" class="form-control" name="roll" required>
+						</div>
+			  	</div>
+			  	<div class="form-group row">
+			  		<div class="col-xs-5 col-md-5">
+			  			<label for="pass">Password: </label>
+			  		</div>
+			  		<div class="col-xs-7 col-md-7">
+							<input type="password" name="pass" class="form-control" required>
+						</div>
+					</div>
+					<center>
+			  		<button type="submit" class="btn btn-primary">Sign In</button>
+			  	</center>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
