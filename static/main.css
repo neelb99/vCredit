@@ -1,12 +1,8 @@
-.navbar-nav{
-	flex-direction: row;
-}
-
 .container-fluid{
 	padding:0;
 }
 
-.navbar-expand-sm .navbar-nav .nav-link {
+.navbar-expand-md .navbar-nav .nav-link {
     padding-right: .65rem;
     padding-left: .65rem;
 }
