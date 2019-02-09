@@ -1,6 +1,57 @@
+<!DOCTYPE html>
 <html>
-<body>
+<head>
+<!-- setting viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- linking favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/letters-and-numbers-1/32/lowercase_letter_v_blue-512.png">
+<!-- linking bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!-- linking main css file -->
+<link rel="stylesheet" href={{url_for('static', filename='main.css')}}>
+<!-- title(tab name) -->
+<title>Verification</title>
 
+</head>
+<body>
+<!-- main container -->
+<div class="container-fluid">
+  <!-- navigation bar -->
+  <nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+    <a href="{{url_for('index')}}" class="navbar-brand">vCredit</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('index')}}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('account')}}">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('pay')}}">Pay</a>
+      </li>
+      <!-- if user is admin -->
+      {% if isadmin %}
+        <li class="nav-item">
+          <a href="{{url_for('update')}}" class="nav-link">Update</a>
+        </li>
+      {%endif%}
+    </ul>
+    <ul class="navbar-nav">
+      <!-- if the user is logged in -->
+      {% if logged %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Sign out</a>
+      </li>
+      {%else%}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('login')}}">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('register')}}">Register</a>
+      </li>
+      {%endif%}
+    </ul>
+  </nav>
 <h2> VERIFICATION</h2>
 
 
@@ -19,6 +70,6 @@ click here to proceed
 
 
 
-
+</div>
 </body>
 </html>
