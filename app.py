@@ -141,6 +141,8 @@ def verify():
                 return render_template('pay.html',logged=logged, loggedout=loggedout, wrong=True, insufficient=False,isadmin=isadmin)
             else:
                 receiver = request.form.get("receiver").strip()
+                if receiver=='student':
+                    receiver = request.form.get("studentroll").strip()
                 check2 = db.execute("SELECT * from users where roll = :rollno", {"rollno": receiver.upper()}).fetchone()
                 if not check2:
                     return render_template('pay.html',logged=logged, loggedout=loggedout, wrong=True, insufficient=False,isadmin=isadmin)
